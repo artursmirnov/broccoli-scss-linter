@@ -36,11 +36,13 @@ Output format (xml, config). If value of this option equals xml, option 'reportF
 Type: `String`
 Default: `''`
 
+File where will be saved report
+
 #### verbose
 Type: `Boolean`
 Deafult: `false`
 
-File where will be saved report
+Enable progress output
 
 ### Examples
 1.
