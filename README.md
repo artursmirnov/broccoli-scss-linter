@@ -1,6 +1,8 @@
-# broccoli-scss-lint 
+# broccoli-scss-linter
 
-> Broccoli plugin for validate .scss files
+> Broccoli plugin for validate .scss files.
+
+> This is a fork of [broccoli-scss-lint](https://github.com/a-tarasyuk/broccoli-scss-lint) that applies latest Broccoli changes and mutes logging for better integration.
 
 ### Dependencies
 
@@ -9,29 +11,29 @@
 
 ### Installation
 ```shell
-npm install broccoli-scss-lint 
+npm install broccoli-scss-lint
 ```
 
 ### Options
 
 #### config
-Type: `String`  
+Type: `String`
 Default: `''`
 
 Specify a configuration file to use
 
 ####bundleExec
-Type: `Boolean`   
+Type: `Boolean`
 Default: `false`
 
 #### format
-Type: `String` | `Array`   
+Type: `String` | `Array`
 Default: `Default`
 
-Output format (xml, config). If value of this option equals xml, option 'reportFile' cannot be empty. Also you can set format as array (['xml', 'default'], ['config', 'default'], ['config', 'default', 'xml']) in order to see errors in console and save result in xml file.  
+Output format (xml, config). If value of this option equals xml, option 'reportFile' cannot be empty. Also you can set format as array (['xml', 'default'], ['config', 'default'], ['config', 'default', 'xml']) in order to see errors in console and save result in xml file.
 
 #### reportFile
-Type: `String`  
+Type: `String`
 Default: `''`
 
 File where will be saved report
@@ -58,10 +60,3 @@ files = scssLint(tree, {
   reportFile: 'scss-lint-report.xml'
 });
 ```
-
-### Release History
-
-0.0.4 - Added option bundleExec.   
-0.0.3 - Bugfixes.   
-0.0.2 - Added opportunity set format as array, fix bugs.   
-0.0.1 - First release
