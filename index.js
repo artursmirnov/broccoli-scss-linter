@@ -12,7 +12,7 @@ var Filter    = require('broccoli-filter'),
  *
  * @param {Object} inputTree
  * @param {Object} options
- * 
+ *
  * @return undefined
  */
 function SCSSLint(inputTree, options) {
@@ -22,7 +22,7 @@ function SCSSLint(inputTree, options) {
 
   this.inputTree = inputTree;
   this.options   = options;
-  
+
   this.options.config     = this.options.config || '';
   this.options.format     = _SCSSLint.format(this.options.format);
   this.options.reportFile = this.options.reportFile || '';
@@ -41,11 +41,11 @@ SCSSLint.prototype.targetExtension = 'scss';
  *
  * @param {String} content
  * @param {String} path
- * 
+ *
  * @return {String} | null
  */
 SCSSLint.prototype.processString = function (content, filePath) {
-  return (!_SCSSLint.lint(this.inputTree.tmpDestDir, filePath, this.options)) ? content : null;
+  return (!_SCSSLint.lint(this.inputTree.outputPath, filePath, this.options)) ? content : null;
 };
 
 /**
@@ -54,7 +54,7 @@ SCSSLint.prototype.processString = function (content, filePath) {
  * @return undefined
  */
 SCSSLint.prototype.finish = function () {
-  _SCSSLint.finish(this.options);  
+  _SCSSLint.finish(this.options);
 };
 
 /**
@@ -62,12 +62,12 @@ SCSSLint.prototype.finish = function () {
  *
  * @param {Object} readTree
  * @param {String} destDir
- * 
+ *
  * @return {Object}
  */
 SCSSLint.prototype.write = function (readTree, destDir) {
   var self = this;
-  
+
   return readTree(this.inputTree).then(function (srcDir) {
     var paths = walkSync(srcDir);
 
@@ -93,22 +93,22 @@ SCSSLint.prototype.write = function (readTree, destDir) {
  * @param {Object} srcDir
  * @param {String} destDir
  * @param {String} relativePath
- * 
+ *
  * @return {Object}
  */
 SCSSLint.prototype.processFile = function (srcDir, destDir, relativePath) {
   var self   = this,
       string = fs.readFileSync(srcDir + '/' + relativePath, {encoding: 'utf8'}),
-      file   = self.getDestFilePath(relativePath); 
-  
+      file   = self.getDestFilePath(relativePath);
+
   return Promise.resolve(self.processString(string, relativePath))
     .then(function (outputString) {
       if (!outputString) {
-        return null;  
+        return null;
       }
 
       fs.writeFileSync(destDir + '/' + file, outputString, {encoding: 'utf8'});
-      
+
       return file;
     })
     .then(function (file) {
