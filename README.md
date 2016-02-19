@@ -11,7 +11,7 @@
 
 ### Installation
 ```shell
-npm install broccoli-scss-lint
+npm install broccoli-scss-linter
 ```
 
 ### Options
@@ -35,6 +35,10 @@ Output format (xml, config). If value of this option equals xml, option 'reportF
 #### reportFile
 Type: `String`
 Default: `''`
+
+#### verbose
+Type: `Boolean`
+Deafult: `false`
 
 File where will be saved report
 
